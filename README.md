@@ -13,3 +13,9 @@ cd CarPartsServer
 mvn spring-boot:run
 ```
 You can access aplication by adreess <http://localhost:4200/>
+
+Client tests can be run by this commands: 
+```
+cd CarPartsClient
+npm test
+```
