@@ -12,3 +12,4 @@ Start server:
 cd CarPartsServer
 mvn spring-boot:run
 ```
+You can access aplication by adreess <http://localhost:4200/>
