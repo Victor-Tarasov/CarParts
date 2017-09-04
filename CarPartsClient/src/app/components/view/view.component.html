@@ -1,0 +1,48 @@
+<div id="insert" class="green_button" (click)="navigateToInsert()">
+  <i class="fa fa-angle-double-left"></i> Add car part
+</div>
+<table id="car_parts">
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Info</th>
+  </tr>
+  <tr *ngFor="let carPart of this?.carParts">
+    <td>{{carPart.partCode}}</td>
+    <td>{{carPart.name}}</td>
+    <td (click)="showCarPartDetails(carPart)">
+      <i class="fa fa-info" aria-hidden="true"></i>
+    </td>
+  </tr>
+</table>
+<div id="part_details_wrapper" #partDetails hidden>
+  <div id="close_wrapper" (click)="closePartDetails()">
+    <i id="close" class="fa fa-close"></i>
+  </div>
+  <table id="part_details">
+    <colgroup>
+      <col id="subject_column">
+      <col>
+    </colgroup>
+    <tr>
+      <td>Part code:</td>
+      <td>{{carPart?.partCode}}</td>
+    </tr>
+    <tr>
+      <td>Part name:</td>
+      <td>{{carPart?.name}}</td>
+    </tr>
+    <tr>
+      <td>Car brand:</td>
+      <td>{{findBrandName(carPart)}}</td>
+    </tr>
+    <tr>
+      <td>Car model:</td>
+      <td>{{carPart?.model.name}}</td>
+    </tr>
+    <tr>
+      <td>Part description:</td>
+      <td>{{carPart?.description}}</td>
+    </tr>
+  </table>
+</div>

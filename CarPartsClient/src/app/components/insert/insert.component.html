@@ -1,0 +1,40 @@
+<div #success_notification id="success_notification" class="notification" hidden="true">Part was added successfully.
+</div>
+<div #error_notification id="error_notification" class="notification" hidden="true">During car part, addition server
+  error was encountered.
+</div>
+
+
+<div id="view_all_wrapper">
+  <div id="view_all" class="green_button" (click)="navigateToView()">
+    View all car parts <i class="fa fa-angle-double-right"></i>
+  </div>
+</div>
+<div id="form_wrapper">
+  <form id="carPartForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <label for="code">Part Code</label>
+    <input type="text" id="code" required size="15" [(ngModel)]="carPart.partCode" name="partCode"
+           pattern="[a-zA-Z0-9]+">
+
+    <label for="name">Part Name</label>
+    <input type="text" id="name" [(ngModel)]="carPart.name" name="name" required size="120">
+
+    <label for="brand">Car Brand</label>
+    <select #brand_select id="brand" required (change)="brandSelected($event.target.value)">
+      <option disabled selected value> -- select brand --</option>
+      <option *ngFor="let brand of getBrands()" value={{brand.id}}>{{brand.name}}</option>
+    </select>
+
+    <label for="model">Car Model</label>
+    <select #model_select id="model" required (change)="modelSelected($event.target.value)">
+      <option disabled selected value> -- select model --</option>
+      <option *ngFor="let model of getModels()" value={{model.id}}>{{model.name}}</option>
+    </select>
+
+    <label for="description">Description</label>
+    <textarea id="description" [(ngModel)]="carPart.description" name="description" required rows="4"
+              maxlength="300"></textarea>
+
+    <input type="submit" class="green_button" value="Submit" [disabled]="submitting">
+  </form>
+</div>
